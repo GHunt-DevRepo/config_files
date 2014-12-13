@@ -1,0 +1,51 @@
+#=============================================
+#
+# My Aliases file
+#
+#
+#============================================
+
+## apt-get helpers
+alias updatedb='sudo updatedb'
+alias fup='sudo apt-get update && sudo apt-get -y dist-upgrade'
+alias qup='sudo apt-get update'
+alias purge='sudo apt-get check && sudo apt-get purge'
+
+## Misc aliases
+alias subl='sublime3'
+alias fsync='fc-cache -fv'
+alias hmonster='cd ~/scripts/ && ./hmssh.sh'
+alias reload='source ~/.bashrc'
+alias reminder='cat ~/.bash_aliases'
+alias fclear='printf "\033c"'
+
+## Server stuff
+alias sstart='sudo service apache2 start && sudo service mysql start'
+alias sstop='sudo service apache2 stop && sudo service mysql stop'
+alias mytop='mytop -u root -p One=0'
+
+## directory helpers
+cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
+alias ror='cd ~/rails_projects/'
+alias js='cd ~/js/'
+alias cdusb='cd /media/Kali\ Live/'
+alias downloads='cd ~/downloads/'
+alias Rdev='cd ~/ror-dev/'
+
+## Directory up/down nav
+alias ..='cd ../'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+
+## Rails helpers
+alias geml='rvm gemset list'
+alias gemla='rvm gemset list_all'
+alias dbkill='rm db/development.sqlite3'
+alias dset='rvm gemset use dev && reload'
+alias bricks='rvm gemset use bricks'
+
+## Functions
+function note(){
+echo "$1" >> notes.txt
+}
