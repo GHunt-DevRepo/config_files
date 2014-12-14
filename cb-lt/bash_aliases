@@ -17,7 +17,7 @@ alias fsync='fc-cache -fv'
 alias hmonster='cd ~/scripts/ && ./hmssh.sh'
 alias reload='source ~/.bashrc'
 alias reminder='cat ~/.bash_aliases'
-alias fclear='printf "\033c"'
+alias c='printf "\033c"'
 
 ## Server stuff
 alias sstart='sudo service apache2 start && sudo service mysql start'

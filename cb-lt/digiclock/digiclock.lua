@@ -104,7 +104,7 @@ end
 function display_text(t)
 
 	local function set_pattern()
-		--this function set the pattern
+		--this function sets the pattern
 		if #t.colour==1 then 
 		    cairo_set_source_rgba(cr,rgb_to_r_g_b2(t.colour[1]))
 		else
