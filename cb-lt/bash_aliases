@@ -18,6 +18,7 @@ alias hmonster='cd ~/scripts/ && ./hmssh.sh'
 alias reload='source ~/.bashrc'
 alias reminder='cat ~/.bash_aliases'
 alias c='printf "\033c"'
+alias dotskill='find . -name ".?*" -exec rm {} \;'
 
 ## Server stuff
 alias sstart='sudo service apache2 start && sudo service mysql start'
