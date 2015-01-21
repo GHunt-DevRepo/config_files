@@ -43,6 +43,9 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+# Always list directory contents upon 'cd'
+cd() { builtin cd "$@"; ls; }
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -59,10 +62,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Git autocomplete for branch listing
+source /etc/bash_completion.d/git
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[31m\]\h\[\e[m\] \[\e[35m\][\[\e[m\]\[\e[34m\]\w\[\e[m\]\[\e[35m\]]\[\e[m\] \[\e[33m\]\\$\[\e[m\]\[\e[31m\]->>\[\e[m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[31m\]\h\[\e[m\] \[\e[35m\][\[\e[m\] \[\e[36m\]\w\[\e[m\] \[\e[35m\]]\[\e[m\] \[\e[33m\]$(__git_ps1)\\$\[\e[m\]\[\e[31m\]=>\[\e[m\] '
 fi
 unset color_prompt force_color_prompt
 
@@ -112,6 +118,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
+## Export node as default JavaScript runtime at the system level
+export EXECJS_RUNTIME=Node
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:/home/ghunt/.rvm/gems/ruby-2.1.4/bin"
