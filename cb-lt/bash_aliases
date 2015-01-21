@@ -50,3 +50,21 @@ alias bricks='rvm gemset use bricks'
 function note(){
 echo "$1" >> notes.txt
 }
+
+function char_count(){
+maxlen=0;
+for token in $mystring; do
+  echo -n "$token: ";
+  echo -n $token | wc -m;
+    if [ ${#token} -gt $maxlen ]; then 
+      maxlen=${#token}; fi;
+done
+
+echo "--------------------------";
+echo -n "Total words: ";
+echo "$mystring" | wc -w;
+echo -n "Total chars: ";
+echo "$mystring" | wc -m;
+echo -n "Max length: "; 
+echo $maxlen
+}
