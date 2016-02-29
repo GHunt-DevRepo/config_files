@@ -1,0 +1,37 @@
+#########################################
+# My bashrc
+#########################################
+
+## Main Shell
+## Prompt
+export PS1="\[\e[31m\]\u\[\e[m\] \[\e[35m\][\[\e[m\] \[\e[36m\]\w\[\e[m\] \[\e[35m\]]\[\e[m\] \[\e[33m\]\\$\[\e[m\]\[\e[31m\]=>\[\e[m\] "
+
+## Color The prompt
+export CLICOLOR=1
+export LSCOLORS=CxFxCxDxBxegedabagacGx
+
+## home-brew bash completion if present
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+## Directory Helpers
+alias ..='cd ../'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+
+alias ls='ls -GFH' # enable ls colors
+
+## Terminal Helpers
+alias reload='source ~/.bash_profile'
+alias dbkill='rm db/development.sqlite3'
+alias geml='rvm gemset list'
+alias gemal='rvm gemset list all'
+alias dset='rvm gemset use dev && reload'
+alias reminder='cat ~/.bash_profile'
+
+## ls on directory change (cd)
+function cd() { builtin cd "$@" && ls; }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
