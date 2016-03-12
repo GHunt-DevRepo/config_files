@@ -11,27 +11,35 @@ export CLICOLOR=1
 export LSCOLORS=CxFxCxDxBxegedabagacGx
 
 ## home-brew bash completion if present
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+	source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
+## OLD --
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#     . $(brew --prefix)/etc/bash_completion
+# fi
+
+if [ -f ~/.aliases ]
+	then source ~/.aliases
 fi
 
-## Directory Helpers
-alias ..='cd ../'
-alias .2='cd ../../'
-alias .3='cd ../../../'
-alias .4='cd ../../../../'
-
-alias ls='ls -GFH' # enable ls colors
-
-## Terminal Helpers
-alias reload='source ~/.bash_profile'
-alias dbkill='rm db/development.sqlite3'
-alias geml='rvm gemset list'
-alias gemal='rvm gemset list all'
-alias dset='rvm gemset use dev && reload'
-alias reminder='cat ~/.bash_profile'
+if [ -f ~/.functions ]
+	then source ~/.functions
+fi
 
 ## ls on directory change (cd)
-function cd() { builtin cd "$@" && ls; }
+# cd () { builtin cd "$@" && ls; }
+# function cd() { builtin cd "$@" && ls; }
+# cd () {
+# 	builtin cd "$@" && ls;
+# }
+# cdl () {
+# 	builtin cd "$@" && ls;
+# }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+## ls on directory change (cd) TEST
+# cd () { builtin cd "$@" && ls; }

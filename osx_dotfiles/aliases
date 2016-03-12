@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+####################################
+## My Bash Aliases
+####################################
+
+## Update Homebrew and let the Dr. have a look
+alias bupd='brew update && brew upgrade && brew doctor'
+
+## Detect what flavor of 'ls' is in use.
+## I dont use this anymore
+# if ls --color > /dev/null Z&1; then # GNU
+# 	colorflag='--color'
+# else # OS X
+# 	colorflag='-G'
+# fi
+
+## Directory Listing Helpers
+# --- List all files colorized in long format
+alias l="ls -lF -G"
+# --- List all files colorized long and dotfiles
+alias la="ls -laF -G"
+
+## Directory UP/DOWN Helpers
+alias ..='cd ../'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+
+## Directory Helpers Navigate to X dir
+alias rdev='cd ~/Dev/rails_projects/'
+alias rgdev='cd ~/Dev/rails_projects/rails_gems/'
+
+## Volumes, switch to StgSSD drive
+alias StgSSD='cd /Volumes/StgSSD/'
+
+# alias ls='ls -GFH' # enable ls colors
+
+## Terminal Helpers
+alias reload='source ~/.bashrc'
+alias dbkill='rm db/development.sqlite3'
+alias geml='rvm gemset list'
+alias gemal='rvm gemset list all'
+alias dset='rvm gemset use dev'
+alias reminder='cat ~/.bashrc'
+
+## Show/hide hidden files in Finder
+alias showdots='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hidedots='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+
+## Recursively delete '.DS_Store' files in current dir
+alias dsclean="find . -type f -name '*.DS_Store' -ls -delete"
